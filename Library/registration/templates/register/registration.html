@@ -1,0 +1,21 @@
+<html>
+    <head>
+        <title>Logout</title>
+        
+    </head>
+
+    <body>
+    <h1>Registration</h1>
+<form method="POST">
+    {% csrf_token %}
+    
+    {{ form.as_p }} 
+
+  <input type="submit" name="sumbit">
+  <a href="{% url 'login' %}">Login</a>
+  &nbsp
+    <a href="{% url 'bookshow' %}">Home</a>
+</form>
+    </body>
+
+</html>

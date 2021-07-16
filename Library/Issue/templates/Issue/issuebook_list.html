@@ -1,0 +1,28 @@
+{% comment %} <h1>Issue Book List</h1>
+{% if request.user.is_authenticated %}
+    <p>{{request.user}}</p>
+    <a href='{% url 'logout' %}'>Logout</a>
+{% else %}
+    <a href='{% url 'login' %}'>Login</a>
+{% endif %}
+
+
+<table>
+    <tr>
+        <th>List</th>
+    </tr>
+    {% for issueBook in booklist %}
+    <tr>
+        <td>{{issueBook.user}}</td>
+    </tr>
+    <tr>
+        <td>{{issueBook.book}}</td>
+    </tr>
+    <tr>
+        <td>{{issueBook.issuingDate}}</td>
+    </tr>
+    {% empty %}
+        <h3>No Item</h3>
+    </br>
+    {% endfor %}
+</table> {% endcomment %}

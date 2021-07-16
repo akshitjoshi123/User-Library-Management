@@ -1,0 +1,51 @@
+<html>
+<head>
+<title>Library Management</title>
+<style>
+table{
+    height: 100px;
+    width: 300px;
+    border: 3px solid red;
+}
+</style>
+</head>
+<body>
+<h1>Library Management</h1>
+
+{% if request.user.is_authenticated %}
+    <p>Hello, {{request.user}}</p>
+    <a href='{% url 'logout' %}'>Logout</a>
+    <a href=''>Dash Board</a>
+    {% comment %} <a href='{% url 'dashboard' %}'>Dash Board</a> {% endcomment %}
+
+    {% if request.user.is_superuser %}
+    <a href='{% url 'addbook' %}'>Add Book</a>
+    {% endif %}
+{% else %}
+    <a href='{% url 'login' %}'>Login</a>
+    &nbsp
+    <a href='{% url 'register' %}'>Registeration</a>
+        
+{% endif %}
+
+<hr>
+<h3>Book List</h3>
+<table>
+    {% for book in books %}
+    <tr>
+        <td>{{book.bookname}}</td>
+    </tr>
+    <tr>
+        <td>{{book.authername}}</td>
+        {% if request.user.is_authenticated %}
+        <td><input type="button" value="Issue Book" ></td>
+            {% comment %} <td><a href="{% url 'book' book.id %}">Details.</a></td> {% endcomment %}
+        {% endif %}
+    </tr>
+    {% empty %}
+        <h3>No Item</h3>
+    </br>
+    {% endfor %}
+</table>
+<body>
+<html>
