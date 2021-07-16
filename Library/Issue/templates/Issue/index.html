@@ -4,7 +4,7 @@
 <style>
 table{
     height: 100px;
-    width: 300px;
+    width: 350px;
     border: 3px solid red;
 }
 </style>
@@ -15,9 +15,9 @@ table{
 {% if request.user.is_authenticated %}
     <p>Hello, {{request.user}}</p>
     <a href='{% url 'logout' %}'>Logout</a>
-    <a href=''>Dash Board</a>
-    {% comment %} <a href='{% url 'dashboard' %}'>Dash Board</a> {% endcomment %}
-
+    &nbsp
+    <a href='{% url 'dashboard' %}'>Dash Board</a>
+    &nbsp
     {% if request.user.is_superuser %}
     <a href='{% url 'addbook' %}'>Add Book</a>
     {% endif %}
@@ -33,13 +33,15 @@ table{
 <table>
     {% for book in books %}
     <tr>
+        <td>Book name:</td>
         <td>{{book.bookname}}</td>
     </tr>
     <tr>
+        <td>Auther name:</td>
         <td>{{book.authername}}</td>
         {% if request.user.is_authenticated %}
-        <td><input type="button" value="Issue Book" ></td>
-            {% comment %} <td><a href="{% url 'book' book.id %}">Details.</a></td> {% endcomment %}
+        {% comment %} <td><input type="button" value="Issue Book" ></td> {% endcomment %}
+        <td><a href="{% url 'bookdetails' book.id %}">Details.</a></td>
         {% endif %}
     </tr>
     {% empty %}

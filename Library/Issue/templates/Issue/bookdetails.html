@@ -1,3 +1,8 @@
 <h1>Book Details.</h1>
 <h3>Book Name :- {{book}}</h3>
 <h3>Auther Name :- {{book.authername}}</h3>
+
+<a href="{% url 'issuebook' book.id %}">Issue Book</a>
+&nbsp
+<a href="{% url 'bookshow' %}">Home</a>
+

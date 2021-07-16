@@ -9,9 +9,8 @@
 <form method="POST">
     {% csrf_token %}
 
-    <p>Are you sure to Issue this Book? "{{books}}"</p>
+    <p>Are you sure to Issue this Book? "{{book}}"</p>
     {% comment %} {{ form.as_p }}  {% endcomment %}
-
     <input type="submit" name="sumbit" value="Issue">
     <a href="{% url 'bookshow' %}">Go Back</a>
 </form>

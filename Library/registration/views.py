@@ -1,9 +1,5 @@
-from django.contrib.auth import login, logout
-from django.contrib.auth import forms
-from django.shortcuts import render
+from django.contrib.auth import login
 from django.contrib.auth.views import LoginView
-from django.views import generic
-from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.urls import reverse_lazy
 from django.views.generic.edit import CreateView
 from .forms import UserRegistrViewForm
@@ -14,11 +10,12 @@ from .forms import UserRegistrViewForm
 # class AdminLogin(LoginView):
 #     template_name = 'Login.html'
 
+
 class UserRegistrView(CreateView):
 
     form_class = UserRegistrViewForm
     # form_class = userForm
-    template_name =  'register/registration.html'
+    template_name = 'register/registration.html'
     redirect_authenticated_user = True
     success_url = reverse_lazy('login')
 
@@ -29,7 +26,6 @@ class UserRegistrView(CreateView):
         return super(UserRegistrView, self).form_valid(form)
 
 
-
 class UserLoginView(LoginView):
     # form_class = AuthenticationForm
     # authentication_form = None
@@ -37,7 +33,6 @@ class UserLoginView(LoginView):
     redirect_authenticated_user = True
     # extra_context = None
     fields = '__all__'
+
     def get_success_url(self):
         return reverse_lazy('bookshow')
-
-    

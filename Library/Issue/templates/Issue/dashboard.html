@@ -5,7 +5,7 @@
 {% else %}
     <a href='{% url 'login' %}'>Login</a>
 {% endif %}
-
+{% endcomment %}
 
 <table>
     <tr>
@@ -16,7 +16,7 @@
         <td>{{issueBook.user}}</td>
     </tr>
     <tr>
-        <td>{{issueBook.book}}</td>
+        <td>{{issueBook.bookname}}</td>
     </tr>
     <tr>
         <td>{{issueBook.issuingDate}}</td>
@@ -25,4 +25,4 @@
         <h3>No Item</h3>
     </br>
     {% endfor %}
-</table> {% endcomment %}
+</table>
