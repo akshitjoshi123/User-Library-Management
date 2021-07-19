@@ -1,19 +1,5 @@
-<html>
-    <head>
-        <title>Issue Book</title>
-        
-    </head>
-
-    <body>
-
-<form method="POST">
+{% comment %} <form action="" method="POST">
     {% csrf_token %}
-
-    <p>Are you sure to Issue this Book? "{{book}}"</p>
-    {% comment %} {{ form.as_p }}  {% endcomment %}
-    <input type="submit" name="sumbit" value="Issue">
-    <a href="{% url 'bookshow' %}">Go Back</a>
-</form>
-    </body>
-
-</html>
+    {{form.as_p}}
+    <button type="submit" value="sumbit" href="{% url 'dashboard' %}">Issue Book</button>
+</form> {% endcomment %}

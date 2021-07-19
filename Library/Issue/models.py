@@ -1,15 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
+from django.urls import reverse
 # Create your models here.
-
-
-class issueBook(models.Model):
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
-    bookname = models.CharField(max_length=200)
-    issuingDate = models.DateTimeField(auto_now_add=True)
-
-    def __str__(self):
-        return self.book
 
 
 class book(models.Model):
@@ -18,3 +10,15 @@ class book(models.Model):
 
     def __str__(self):
         return self.bookname
+
+
+class issueBook(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    bookname = models.ForeignKey(book, on_delete=models.CASCADE)
+    issuingDate = models.DateTimeField(auto_now_add=True)
+
+    # def __str__(self):
+    #     return self.bookname
+    # def get_absolute_url(self):
+    #     return reverse('dashboard')
+    

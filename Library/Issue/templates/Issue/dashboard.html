@@ -13,16 +13,18 @@
     </tr>
     {% for issueBook in booklist %}
     <tr>
-        <td>{{issueBook.user}}</td>
+        <td>User Name: <b>{{issueBook.user}}</b></td>
     </tr>
     <tr>
-        <td>{{issueBook.bookname}}</td>
+        <td>Book Name: <b>{{issueBook.bookname}}</b></td>
     </tr>
     <tr>
-        <td>{{issueBook.issuingDate}}</td>
+        <td>Book Issue Date-Time: <b>{{issueBook.issuingDate}}</b></td>
     </tr>
     {% empty %}
         <h3>No Item</h3>
     </br>
+    <hr>
     {% endfor %}
 </table>
+<a href="{% url 'bookshow' %}">Home</a>
