@@ -1,15 +1,10 @@
-import re
-from django.contrib.auth.models import User
-from django.http import request
 from django.views.generic.base import View
 from django.views.generic.list import ListView
 from django.views.generic.detail import DetailView
 from Issue.models import book, issueBook
-from django.views.generic.edit import CreateView, DeleteView
+from django.views.generic.edit import CreateView
 from django.urls import reverse_lazy
-from .models import book, issueBook
-# from Issue.forms import Addform
-# Create your views here.
+from django.shortcuts import redirect
 
 
 class dashboard(ListView):
@@ -41,25 +36,10 @@ class bookdetails(DetailView):
 
 
 class show(View):
-
-    def get(self, request,*args, **kwargs):
+    def get(self, request, book_id, *args, **kwargs):
         user = request.user
-        print(user)
+        books = book.objects.get(id=book_id)
+        obj = issueBook(user=user, bookname=books)
+        obj.save()
+        return redirect('/dashboard')
 
-        books = request.GET.get['book_id']
-        print(books)
-
-# class BookIssueView(CreateView):
-#     model = issueBook
-#     # form_class = Addform
-#     context_object_name = 'book'
-#     template_name = 'Issue/issuebook.html'
-#     success_url = reverse_lazy('dashboard')
-
-    # def get_queryset(self):
-    #     user = User.objects.get(username= self.request.user)
-    #     b = book.objects.get(bookname = self.request)
-
-    #     obj = issueBook(user=user,bookname=b)
-    #     obj.save()
-        
